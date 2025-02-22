@@ -17,6 +17,7 @@ module.exports = function (RED) {
         node.token?.api || nodeDB.getValueFromGlobalContext(OPEN_AI_KEY);
       const endpoint =
         node.token?.endpoint || nodeDB.getValueFromGlobalContext(AZURE_OPENAI_ENDPOINT);
+      const apiVersion = "2025-01-01-preview";
 
       send =
         send ||
