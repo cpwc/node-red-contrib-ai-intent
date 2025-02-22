@@ -1,5 +1,5 @@
 {
-  "name": "@technithusiast/node-red-contrib-ai-intent",
+  "name": "@cpwc/node-red-contrib-ai-intent",
   "version": "3.0.0-alpha",
   "description": "A collection of nodes to elevate a user's automation interactions",
   "scripts": {

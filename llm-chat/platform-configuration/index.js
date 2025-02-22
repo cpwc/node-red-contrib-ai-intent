@@ -9,7 +9,8 @@ module.exports = function (RED) {
 
   RED.nodes.registerType("platform-configuration", PlatformConfigurationNode, {
     credentials: {
-      api: {type:"text"}
+      api: { type: "text" },
+      endpoint: { type: "text" }
     }
   });
 };

@@ -1,5 +1,5 @@
 <style>
-    .hidden{
+    .hidden {
         display: none;
     }
 </style>
@@ -9,35 +9,42 @@
         category: 'config',
         defaults: {
             name: { value: "", required: true },
-            platform: {value: "gpt", required: true},
-            url: {value: ""},
+            platform: { value: "gpt", required: true },
+            url: { value: "" },
             model: { value: "gpt-4o", required: true },
         },
         credentials: {
-            api: {type:"text"},
+            api: { type: "text" },
         },
         label: function () {
             return this.name
         },
-        oneditprepare: function (){
+        oneditprepare: function () {
             $("#node-config-input-platform").typedInput({
                 types: [
                     {
                         value: "gpt",
                         options: [
-                            { value: "gpt", label: "ChatGPT"},
-                            { value: "gemini", label: "Gemini"},
-                            { value: "ollama", label: "Ollama"},
+                            { value: "gpt", label: "ChatGPT" },
+                            { value: "gemini", label: "Gemini" },
+                            { value: "ollama", label: "Ollama" },
+                            { value: "azureopenai", label: "Azure OpenAI" },
                         ]
                     }
                 ]
-            }).on("change", function() {
+            }).on("change", function () {
                 if ($(this).val() === "ollama") {
                     $("#api").addClass("hidden");
                     $("#url").removeClass("hidden");
+                    $("#endpoint").addClass("hidden");
+                } else if ($(this).val() === "azureopenai") {
+                    $("#api").removeClass("hidden");
+                    $("#url").addClass("hidden");
+                    $("#endpoint").removeClass("hidden");
                 } else {
                     $("#api").removeClass("hidden");
                     $("#url").addClass("hidden");
+                    $("#endpoint").addClass("hidden");
                 }
             })
         }
@@ -70,6 +77,11 @@
         <label for="node-config-input-url"><i class="fa fa-internet-explorer"></i>Ollama URL</label>
         <input type="text" id="node-config-input-url">
     </div>
+
+    <div class="form-row hidden" id="endpoint">
+        <label for="node-config-input-endpoint"><i class="fa fa-internet-explorer"></i>Azure OpenAI Endpoint URL</label>
+        <input type="text" id="node-config-input-endpoint">
+    </div>
 </script>
 
 <script type="text/html" data-help-name="platform-configuration">
@@ -90,13 +102,14 @@
                 <li><b>ChatGPT</b> – OpenAI models (e.g., GPT-4o)</li>
                 <li><b>Gemini</b> – Google AI models</li>
                 <li><b>Ollama</b> – Local AI models</li>
+                <li><b>Azure OpenAI</b> – Azure OpenAI models (e.g., GPT-4o)</li>
             </ul>
         </dd>
 
         <dt class="required">Model
             <span class="property-type">string</span>
         </dt>
-        <dd>The specific AI model to use. Defaults to "gpt-4o" for OpenAI.</dd>
+        <dd>The specific AI model to use. Defaults to "gpt-4o" for OpenAI or Azure OpenAI.</dd>
 
         <dt class="optional">API Token
             <span class="property-type">string</span>
@@ -107,6 +120,11 @@
             <span class="property-type">string</span>
         </dt>
         <dd>Required only when using Ollama. Enter the local Ollama server URL.</dd>
+
+        <dt class="optional">Azure OpenAI Endpoint
+            <span class="property-type">string</span>
+        </dt>
+        <dd>Required only when using Azure OpenAI. Enter the given Azure OpenAI Endpoint URL.</dd>
     </dl>
 
     <h3>Behavior</h3>
