@@ -34,7 +34,7 @@ module.exports = function (RED) {
       const { message } = msg.payload;
       const output = [];
 
-      if(message.tool_calls){
+      if (message.tool_calls) {
         message.tool_calls.forEach((answer) => {
 
           const payload = createConsistentPayload(answer.content);
@@ -53,12 +53,12 @@ module.exports = function (RED) {
           }
         });
       }
-      else{
+      else {
         output.push(createConsistentPayload(message.content));
       }
 
       return output
-    }; 
+    };
     const formatPayloadForOpenAI = (msg) => {
       const output = [];
       // Goes through the OpenAI Response and creates a standard uniformed output
@@ -111,7 +111,7 @@ module.exports = function (RED) {
       return output;
     };
 
-    this.on("input", function (msg, send, done = () => {}) {
+    this.on("input", function (msg, send, done = () => { }) {
       send =
         send ||
         function () {
@@ -121,6 +121,10 @@ module.exports = function (RED) {
       msg.originalResponse = msg.payload;
 
       switch (msg._debug.type) {
+        case TYPES.AzureOpenAIChat: {
+          msg.payload = formatPayloadForOpenAI(msg);
+          break;
+        }
         case TYPES.OpenAIChat: {
           msg.payload = formatPayloadForOpenAI(msg);
           break;

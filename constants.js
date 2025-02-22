@@ -5,9 +5,11 @@ module.exports = {
   INTENT_STORE: "intent_store",
   ACTIVE_CONVERSATION: "active_conversation_context",
   CONVERSATION_CONTEXT: "conversation_context",
+  AZURE_OPENAI_ENDPOINT: "azure_openai_endpoint",
   TYPES: {
     RegisterIntent: "Register Intent",
     CallIntent: "Call Intent",
+    AzureOpenAIChat: "Azure OpenAI Chat",
     OpenAIChat: "OpenAI Chat",
     LLMChat: "LLM Chat",
     LocalAIChat: "LocalAI Chat",

@@ -1,6 +1,6 @@
 {
   "name": "@cpwc/node-red-contrib-ai-intent",
-  "version": "3.0.0-alpha",
+  "version": "3.1.1-alpha",
   "description": "A collection of nodes to elevate a user's automation interactions",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -19,6 +19,7 @@
       "geminiai-chat": "geminiai-chat/index.js",
       "localai-chat": "localai-chat/index.js",
       "openai-chat": "openai-chat/index.js",
+      "azure-openai-chat": "azure-openai-chat/index.js",
       "openai-system": "openai-system/index.js",
       "openai-tool": "openai-tool/index.js",
       "openai-user": "openai-user/index.js",
@@ -28,6 +29,7 @@
       "register-intent": "register-intent/index.js",
       "platform-configuration": "llm-chat/platform-configuration/index.js",
       "openai-configuration": "openai-chat/openai-configuration/index.js",
+      "azure-openai-configuration": "azure-openai-chat/azure-openai-configuration/index.js",
       "localai-configuration": "localai-chat/localai-configuration/index.js",
       "geminiai-configuration": "geminiai-chat/geminiai-configuration/index.js"
     }

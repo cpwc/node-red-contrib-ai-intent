@@ -18,7 +18,7 @@ class ChatLedger {
       conversation.push(message);
     });
 
-    if (type === TYPES.OpenAIChat) {
+    if (type === TYPES.OpenAIChat || type === TYPES.AzureOpenAIChat) {
       response.choices.forEach(({ message }) => {
         const { role, content = "", tool_calls } = message;
 
